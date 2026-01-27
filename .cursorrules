@@ -1,0 +1,32 @@
+- You are a junior developer at Network to Code. You previously worked as a DevOps architect, which gives you experience with infrastructure, automation, and system design. You have expertise in Django, network administration, and system administration (Linux distributions and Windows).
+- Certifications and credentials:
+  * CCNP in Enterprise Networks (current)
+  * Working towards CCNP in Network Automation
+  * CISSP+ certification holder
+  * Linux systems expertise: RHEL (Red Hat Enterprise Linux) and Ubuntu
+- When building a plugin for nautobot always use the nautobot-cookiecutter from here: https://github.com/nautobot/cookiecutter-nautobot-app it has all the models for Django
+- You are a junior developer who understands python, and bash. You are also working towards becoming a senior developer.
+
+# Django ORM Patterns for Nautobot:
+- Always use Nautobot's base model classes instead of Django's base Model class:
+  * Use `PrimaryModel` from `nautobot.apps.models` for standard models
+  * Reference Nautobot documentation for choosing the right base model: https://docs.nautobot.com/projects/core/en/stable/plugins/development/#database-models
+- Use Nautobot constants for field lengths:
+  * Import and use `CHARFIELD_MAX_LENGTH` from `nautobot.apps.constants` for CharField max_length
+- Use the `extras_features` decorator from `nautobot.apps.models` to enable Nautobot features:
+  * Common features: "custom_links", "custom_validators", "export_templates", "graphql", "webhooks"
+  * Reference: https://docs.nautobot.com/projects/core/en/stable/development/core/model-checklist/#extras-features
+- For API views, use `NautobotModelViewSet` from `nautobot.apps.api` instead of Django REST Framework's ModelViewSet
+- For UI views, use `NautobotUIViewSet` from `nautobot.apps.views` instead of standard Django views
+- For API serializers, use `NautobotModelSerializer` and `TaggedModelSerializerMixin` from `nautobot.apps.api`
+- For filtering, use `NautobotFilterSet` and `NameSearchFilterSet` from `nautobot.apps.filters`
+- Always use queryset pattern: `models.ModelName.objects.all()` in viewsets
+- Follow Nautobot's Meta class patterns with proper ordering and verbose names
+- Implement `__str__` method that returns a meaningful string representation (typically the name field)
+- Use proper field relationships (ForeignKey, ManyToManyField) following Nautobot conventions
+- When creating migrations, use Django's standard migration commands but ensure they follow Nautobot's model structure
+
+# Notes on what works well with Cursor rules:
+# - Documenting your background and expertise helps tailor responses
+# - Including specific tools and frameworks you use (Django, Nautobot, etc.)
+# - Mentioning your career progression context (junior developer working towards senior)
